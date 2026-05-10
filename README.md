@@ -9,12 +9,19 @@ This project implements an autonomous navigation stack for a mobile robot in a s
 2) Implementation Task:
   Command,Task,Description
 i) ros2 run turtlebot3_teleop teleop_keyboard,Task A (Part 1),Keyboard Control: Manually drive the robot to test the physics and motor response.
+
 ii) rqt,Task A (Part 2),RQT Visualization: Open the GUI to view /camera/image_raw and monitor topic frequencies.
+
 iii) ros2 run color_navigation run_task_b,Task B,Camera Interface: Accesses and displays the raw robot camera feed.
+
 iv) ros2 run color_navigation run_task_c,Task C,Vision Processing: Applies HSV masks to isolate the green sphere.
+
 v) ros2 run color_navigation run_task_d,Task D,Basic Motion: Moves the robot toward the detected object.
+
 vi) ros2 run color_navigation run_task_e_lidar,Task E,Autonomous Logic: Integrated tracking with LiDAR safety stopping.
+
 vii) ros2 run color_navigation run_lidar_method1,Safety Node,Collision Avoidance: Direct LiDAR-to-CMD_VEL emergency stop logic.
+
 
    **Technical Implementation:**
 1) Computer Vision (Tasks B & C)
