@@ -41,3 +41,16 @@ Teleop: Using the I-J-K-L-M keys, I verified that the robot navigates the hospit
 rqt_image_view: I used this tool to confirm that the camera plugin is active and publishing data on the correct ROS2 topic before running the OpenCV scripts.
 
 rqt_graph: Used to visualize the node connections, ensuring the /cmd_vel and /scan topics were properly linked between the simulation and my custom nodes.
+
+
+
+
+For Task G:
+The robot utilizes a LaserScan (LiDAR) feedback loop to monitor the environment in real-time. By filtering the incoming data to focus strictly on the front 10° to 20° arc (the robot's path), the system calculates the minimum distance to any object. If this distance drops below a safety threshold (e.g., 0.40m), the controller immediately overrides the navigation logic and publishes a geometry_msgs/Twist message with all linear and angular velocities set to 0.0, effectively "freezing" the robot to prevent a collision.
+
+Alternative Data Sources for Stopping:
+While LiDAR is highly accurate, other data sources can be used to improve reliability:
+i)  Depth Data (RGB-D): Using the PointCloud or Depth Image from the camera to calculate the distance to the nearest group of pixels.
+ii) Ultrasonic Sensors (Sonar): Often used as a redundant safety layer for detecting glass or mesh that LiDAR might miss.
+iii) IMU (Inertial Measurement Unit): To detect sudden deceleration or "impact" if a bumper is triggered.
+iv)  Wheel Odometry: To verify if the robot is attempting to move but the position isn't changing (detecting a stall or obstacle).
